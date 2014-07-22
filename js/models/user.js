@@ -21,6 +21,5 @@ App.User = DS.Model.extend({
 // 	  avatarUrl: 'http://jkneb.github.io/ember-crud/assets/images/avatars/jk.jpg',
 // 	  creationDate: 'Fri, 07 Aug 2013 10:10:10 GMT'
 // 	}
-
 // ];
 
