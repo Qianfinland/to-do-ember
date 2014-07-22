@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <script type="text/x-handlebars" data-template-name="application">
+    <div class="main">
+      <h1>Tutorial</h1>
+      {{outlet}}
+    </div>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="users">
+    {{#link-to "users.create" class="create-btn"}} Add user {{/link-to}}
+    <div>Users: {{usersCount}}</div>
+    <ul class="users-listing">
+    {{#each user in controller}}
+      <li>
+        {{#link-to "user" user}}
+          {{user.name}}
+        {{/link-to}}
+      </li>
+    {{/each}}
+    </ul>
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="user">
+    <div class="user-profile">
+      <button {{action "edit"}}>Edit</button>
+      <button {{action "delete"}}>Delete</button>
+      {{#if deleteMode}}
+      <div class="confirm-box">
+        <h4>Really?</h4>
+        <button {{action "confirmDelete"}}> yes </button>
+        <button {{action "cancelDelete"}}> no </button>
+      </div>
+      {{/if}}
+      <img {{bind-attr src="avatarUrl"}} alt="User's avatar" />
+      <h2>{{name}}</h2>
+      <span>{{email}}</span>
+      <p>{{bio}}</p>
+      <span>Created {{formatDate creationDate}}</span>
+    </div>
+    {{outlet}}
+  </script>
+  
+
+  <script type="text/x-handlebars" data-template-name="user/edit">
+
+    <button {{action "save"}}> ok </button>
+    <div class="user-edit">
+      <label>Choose user avatar</label>
+      {{input value=avatarUrl}}
+
+      <label>User name</label>
+      {{input value=name}}
+
+      <label>User email</label>
+      {{input value=email}}
+
+      <label>User short bio</label>
+      {{textarea value=bio}}
+    </div>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.6.1.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/libs/localstorage.js"></script>
+  <script src="js/libs/moment.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/controllers/userController.js"></script>
+  <script src="js/controllers/userEditController.js"></script>
+  <script src="js/controllers/usersController.js"></script>
+  <script src="js/controllers/usersCreateController.js"></script>
+  <script src="js/models/user.js"></script>
+  <script src="js/routes/usersCreateRoute.js"></script>
+  <script src="js/routes/usersRoute.js"></script>
+  <script src="js/routes/indexRoute.js"></script>
+  <script src="js/routes/userRoute.js"></script>
+  <script src="js/routes/userEditRoute.js"></script>
+  <script src="js/helpers/helpers.js"></script>
+
+
+  
+  
+</body>
+</html>
